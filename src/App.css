@@ -1,17 +1,120 @@
 :root {
-    --primary: "#3ABFF8";
-    --secondary: "#828DF8";
-    --accent: "#F471B5";
-    --neutral: "#1D283A";
-    --base-100: "#0F1729";
-    --info: "#0CA6E9";
-    --success: "#2BD4BD";
-    --warning: "#F4C152";         
-    --error: "#FB6F84";
+    --primary: #3ABFF8;
+    --secondary: #828DF8;
+    --accent: #F471B5;
+    --neutral: #1D283A;
+    --base-100: #0F1729;
+    --info: #0CA6E9;
+    --success: #2BD4BD;
+    --warning: #F4C152;         
+    --error: #FB6F84;
 }
 
 * {
     box-sizing: border-box;
+    margin: 0;
     font-family: 'Quicksand', sans-serif;
+    color: #000;
 }
 
+.content {
+    padding: 1em 2em;
+}
+
+/* NAVBAR SECTION */
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1em 1.5em;
+    border-bottom: 1px solid #f1f1f1;
+}
+
+.navbar__title {
+    font-size: 2em;
+}
+
+.navbar__list > .link {
+    text-decoration: none;
+    padding: 1em 1.5em;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+.link span {
+    display: inline-block;
+    position: relative;
+}
+
+.link span:after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background: var(--primary);
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+}
+
+.link span:hover:after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+.link.active span{
+    color: var(--primary);
+}
+
+.link.active span:after{
+    color: var(--primary);
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+/* INBOX SECTION */
+
+
+
+/* NOTFOUND SECTION */
+
+.notfound { 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+}
+
+.notfound p {
+    font-weight: 700;
+    font-size: 4em;
+}
+
+.notfound h1 {
+    font-size: 3em;
+}
+
+.go-back {
+    font-size: 1em;
+    text-transform: uppercase;
+    padding: .75em 1em;
+    border-radius: 1em;
+    border: none;
+    background: var(--primary);
+    border: 1px solid var(--primary);
+    text-decoration: none;
+    font-weight: 700;
+    color: #fff;
+    transition: 0.2s ease-in-out;
+}
+
+.go-back:hover {
+    padding: (.75em-1px) (1em-1px);
+    border: 1px solid var(--primary);
+    color: var(--primary);
+    background: white;
+}
