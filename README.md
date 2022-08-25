@@ -4,7 +4,7 @@
 
 - [Overview](#overview)
   - [Screenshot](#screenshot)
-  - [Links](#links)
+  - [How to setup](#how-to-setup)
 - [My process](#my-process)
   - [Built with](#built-with)
   - [What I learned](#what-i-learned)
@@ -15,9 +15,13 @@
 
 ### Screenshot
 
-### Links
+### How to setup
 
-- Live Site URL: [Netlify]()
+- Run local JSON server
+ `npx json-server --watch data/db.json --port 8000`
+
+- Run Vite
+  `npm run dev`
 
 ## My process
 
@@ -26,7 +30,7 @@
 - HTML5
 - CSS 
 - [React](https://reactjs.org/) - JS library
-- [React Day Picker](https://react-day-picker.js.org) - Date Picker Component
+- [JSON-server](https://github.com/typicode/json-server) - Get a full fake REST API
 - [React Router](https://reactrouter.com) - Client-Side Routing
 - [Vite.js](https://vitejs.dev) - Frontend Tooling
 
