@@ -1,18 +1,17 @@
-import { daysInWeek } from 'date-fns';
 import { addDays, format, isToday } from 'date-fns/esm';
 import { nanoid } from 'nanoid';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import sortArray from 'sort-array';
 import Todo from './Todo';
-export default function TodoList({ tasks, days }) {
-  const [sortedTasks, setSortedTasks] = useState(() =>
-    sortArray(tasks, { by: ['day', 'hour'] })
-  );
-  const [displayDays, setDisplayDays] = useState(() =>
-    getDays(days)
-  );
+export default function TodoList({ tasks, days, handleChange }) {
+  const [todos, setTodos] = useState(() => getDays(days));
+
+  useEffect(() => {
+    setTodos(() => getDays(days));
+  }, [tasks]);
 
   function getDays(days) {
+    const sortedTasks = sortArray(tasks, { by: ['day', 'hour'] });
     let daysToDisplay = [];
     if (days) {
       const today = new Date();
@@ -31,19 +30,20 @@ export default function TodoList({ tasks, days }) {
     return uniquesDays;
   }
 
-  function getDaysWithTasks() {
-    const allDays = sortedTasks.map((task) => task.day);
-    const uniqueDays = [...new Set(allDays)];
-    const uniquesDaysWithTasks = uniqueDays.map((day) => {
-      const dayTasks = sortedTasks.filter((task) => task.day === day);
-      return [[day], dayTasks];
+  function handleDelete(id) {
+    fetch('http://localhost:8000/tasks/' + id, {
+      method: 'DELETE',
     });
-    return uniquesDaysWithTasks;
+    refetch();
+  }
+
+  function refetch() {
+    handleChange();
   }
 
   return (
     <div className="todolist">
-      {displayDays.map((days) => {
+      {todos.map((days) => {
         return (
           <div className="day" key={days[0]}>
             <div className="date">
@@ -60,7 +60,14 @@ export default function TodoList({ tasks, days }) {
               )}
             </div>
             {days[1].map((day) => {
-              return <Todo day={day} key={nanoid(4)} />;
+              return (
+                <Todo
+                  day={day}
+                  key={nanoid(4)}
+                  handleDelete={handleDelete}
+                  handleChange={() => refetch()}
+                />
+              );
             })}
           </div>
         );
