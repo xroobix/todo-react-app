@@ -18,7 +18,7 @@
 ### How to setup
 
 - Run local JSON server
- `npx json-server --watch data/db.json --port 8000`
+ `npm run server`
 
 - Run Vite
   `npm run dev`
