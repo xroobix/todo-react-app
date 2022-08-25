@@ -1,20 +1,29 @@
+import { AiFillCarryOut } from 'react-icons/ai';
 import { NavLink } from 'react-router-dom';
 export default function Navbar() {
-  console.log('render navbar');
+  const logoIcon = (
+    <AiFillCarryOut className="icon" size="40px" fill="#3ABFF8" />
+  );
 
   return (
     <nav className="navbar">
-      <h1 className="navbar__title">Todo App</h1>
-      <div className="navbar__list">
+      <div className="list">
         <NavLink to="" className="link">
-          <span>Inbox</span>
+          Inbox
         </NavLink>
         <NavLink to="today" className="link">
-          <span>Today</span>
+          Today
         </NavLink>
         <NavLink to="nextweek" className="link">
-          <span>Next 7 days</span>
+          Next 7 days
         </NavLink>
+        <NavLink to="add" className="link">
+          Add Todo
+        </NavLink>
+      </div>
+      <div className="logo">
+        <h1 className="title">Todos App</h1>
+        {logoIcon}
       </div>
     </nav>
   );
