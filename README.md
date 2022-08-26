@@ -7,7 +7,6 @@
   - [How to setup](#how-to-setup)
 - [My process](#my-process)
   - [Built with](#built-with)
-  - [What I learned](#what-i-learned)
   - [Continued development](#continued-development)
 
 
@@ -35,8 +34,8 @@
 - [Vite.js](https://vitejs.dev) - Frontend Tooling
 
 
-### What I learned
-
-
 ### Continued development
 
+- remake navbar with logo hamburger menu on mobile that pops-up sidebar, on desktop navbar with only logo and sidebar that is always visable
+
+- create component that lets users create their own category 
