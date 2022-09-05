@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams, Link } from 'react-router-dom';
 import Form from '../components/Form';
 export default function Edit() {
   const { todoId } = useParams();
@@ -43,12 +43,23 @@ export default function Edit() {
     });
   }
 
+  const errorMessage = (
+    <div className="notfound">
+      <p>¯\_(ツ)_/¯</p>
+      <h1>Oops...</h1>
+      <h2 className="error">{error}</h2>
+      <Link to="" className="go-back">
+        Click here to go back
+      </Link>
+    </div>
+  )
+
   return (
     <>
       {isLoading ? (
         <h2 className="loading">Loading...</h2>
       ) : error ? (
-        <h2 className="error">{error}</h2>
+        errorMessage
       ) : (
         data && <Form todo={data} handleSubmit={handleSubmit} />
       )}
