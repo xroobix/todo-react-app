@@ -14,6 +14,8 @@
 
 ### Screenshot
 
+![screenshot](./todo-preview.png)
+
 ### How to setup
 
 - Run local JSON server
