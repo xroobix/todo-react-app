@@ -29,8 +29,6 @@ export default function Inbox() {
 
   function handleChange() {
     setShouldFetch(true);
-    console.log("refetched")
-    console.log(shouldFetch)
   }
 
   return (
