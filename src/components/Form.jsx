@@ -48,7 +48,7 @@ export default function Form({ todo, handleSubmit }) {
           <option value="Work">Work</option>
           <option value="Study">Study</option>
         </select>
-        <button className="submit">Add Todo</button>
+        <button className="submit">Add ToDo</button>
       </form>
     </div>
   );
