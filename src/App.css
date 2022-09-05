@@ -11,10 +11,21 @@
     margin: 0;
     font-family: 'Quicksand', sans-serif;
     color: #000;
+    
+}
+
+body {
+  -ms-overflow-style: none; /* for Internet Explorer, Edge */
+  scrollbar-width: none; /* for Firefox */
+  overflow-y: scroll; 
+}
+
+body::-webkit-scrollbar {
+  display: none; /* for Chrome, Safari, and Opera */
 }
 
 .content {
-    padding: .5em 1em;
+    display: flex;
 }
 
 .content .error, .content .loading {
@@ -32,66 +43,321 @@
   cursor: pointer;
 }
 
-/* NAVBAR SECTION */
+/* NAVBAR-MOBILE MOBILE SECTION */
 
-.navbar {
-    position: sticky;
-    top: 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: .5em .75em;
-    border-bottom: 1px solid #f1f1f1;
-    background: white;
+.navbar-mobile {
+  position: sticky;
+  top: 0;
+  background: white;
+  border-bottom: 1px solid #e4e5f1;
+  padding: .5em .75em;
 }
 
-.navbar .logo {
+.navbar-mobile .hamburger, .navbar-mobile .close {
+  cursor: pointer;
+}
+
+.navbar-mobile a {
+  text-decoration: none;
+}
+
+.navbar-mobile .topnav {
   display: flex;
   align-items: center;
+  justify-content: space-between;
 }
 
-.navbar .title {
-    color: var(--primary);
+
+.hamburger, .close {
+  display: flex;
+  transition: .2s ease-in-out; 
 }
 
-.navbar .link {
-    text-decoration: none;
-    text-transform: uppercase;
-    font-weight: 700;
-    padding-inline: 1em;
+.hamburger:hover, .close:hover {
+  fill: #1d7ea8;
 }
 
-.link.active {
+
+.navbar-mobile .close-button {
+  padding: .5em .75em;
+  border-bottom: 1px solid lightgray;
+  background: transparent;
+}
+
+.navbar-mobile .logo {
+  display: flex;
+  gap: .5em;
+}
+
+.navbar-mobile .logo .title {
   color: var(--primary);
 }
 
-/* TODO LIST SECTION */
-
-.day {
-  padding-block: .75em;
+.navbar-mobile .sidebar-mobile {
+  background: #f1f1f1;
+  width: 360px;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  transform: translateX(-100%);
+  transition: 350ms ease-in-out;
+  z-index: 1;
+  overflow-y: auto
 }
 
-.day .date {
+.sidebar-mobile .wrapper {
+  min-width: 100%;
   display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.sidebar-mobile .list {
+  margin-top: 2em;
+}
+
+
+.sidebar-mobile.active {
+  transform: translateX(0);
+}
+
+.sidebar-mobile .page {
+  display: flex;
+  flex-direction: column;
+  transition: .1s ease-out .2ms;
+  margin-block: .25em;
+}
+
+.sidebar-mobile .dropdown-page {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  border-bottom: 1px solid lightgray;
+  padding: .75em 3em;
+  margin-block: 1em;
+}
+
+.sidebar-mobile .item {
+  padding: .75em 3em;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 1em;
+}
+
+.sidebar-mobile .item.add {
+  justify-content: center;
+
+  border-top: 1px solid lightgray;
+}
+
+.sidebar-mobile .item.active {
+  background: #dbdbdb;
+  font-weight: 700;
+}
+
+.sidebar-mobile .item:hover {
+  background: #dbdbdb;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.sidebar-mobile .menu {
+  display: flex;
+  flex-direction: row;
   align-items: baseline;
   gap: 1em;
 }
 
-.date p {
+.sidebar-mobile .icon {
+  cursor: pointer;
+  display: flex;
+  width: 1em;
+}
+
+.sidebar-mobile .menu .title {
+  font-weight: 700;
+}
+
+.sidebar-mobile .see-all {
+  font-size: .95em;
+  font-weight: 600;
+  color: gray;
+  letter-spacing: .05em;
+}
+
+.sidebar-mobile .see-all:hover {
+  text-decoration: underline;
+}
+
+.submenu .item {
+  display: flex;
+  gap: 1em;
+}
+
+
+/* NAVBAR SECTION */
+
+.navbar {
+  position: sticky;
+  top: 0;
+  background: white;
+  border-bottom: 1px solid #e4e5f1;
+  padding: .5em .75em;
+}
+
+.navbar .logo {
+  display: flex;
+  gap: .5em;
+}
+
+.navbar .title {
+  color: var(--primary);
+}
+
+
+
+/* SIDEBAR SECTION */
+
+.sidebar {
+  background: #f1f1f1;
+  width: 360px;
+  height: calc(100vh - 57px);
+  display: flex;
+  justify-content: center;
+  top: 57px;
+  position: sticky;
+  border-right: 1px solid lightgray;
+  
+}
+
+.sidebar a {
+  text-decoration: none;
+}
+
+.sidebar .wrapper {
+  min-width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.sidebar .list {
+  margin-top: 2em;
+}
+
+.sidebar .page {
+  display: flex;
+  flex-direction: column;
+  transition: .1s ease-out .2ms;
+  margin-block: .25em;
+}
+
+.sidebar .dropdown-page {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  border-bottom: 1px solid lightgray;
+  padding: .75em 3em;
+  margin-block: 1em;
+}
+
+.sidebar .item {
+  padding: .75em 3em;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 1em;
+}
+
+.sidebar .item.add {
+  justify-content: center;
+  border-top: 1px solid lightgray;
+}
+
+.sidebar .item.active {
+  background: #dbdbdb;
+  font-weight: 700;
+}
+
+.sidebar .item:hover {
+  background: #dbdbdb;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.sidebar .menu {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  gap: 1em;
+}
+
+.sidebar .icon {
+  cursor: pointer;
+  display: flex;
+  width: 1em;
+}
+
+.sidebar .menu .title {
+  font-weight: 700;
+}
+
+.sidebar .see-all {
+  font-size: .95em;
+  font-weight: 600;
+  color: gray;
+  letter-spacing: .05em;
+}
+
+.sidebar .see-all:hover {
+  text-decoration: underline;
+}
+
+.submenu .item {
+  display: flex;
+  gap: 1em;
+}
+
+/* TODO LIST SECTION */
+
+.todolist {
+  width: 100%;
+  padding: 1em;
+}
+
+.todolist .day {
+  padding-inline: .75em;
+  border-radius: 1em;
+  border: 1px solid #f0f0f0;
+  box-shadow: inset 0 0 10px #f0f0f0;
+  margin-block: .75em;
+}
+
+.todolist .date {
+  display: flex;
+  align-items: baseline;
+  gap: 1em;
+  padding-block: 1em;
+}
+
+.todolist .date p {
   font-size: .75em;
 }
 
 /* TODO SECTION */
 
 .todo {
-    padding: .50em 1em;
-    margin-block: .75em;
+    padding: .75em 1em;
     display: flex;
     gap: 1em;
-    border-bottom: 1px solid #f0f0f0;
+    border-top: 1px solid #f0f0f0;
 }
 
-.todo .buttons {
+.todo .arrows {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -157,7 +423,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: .5em;
+  gap: .25em;
 }
 
 .menu .edit, .menu .remove {
@@ -182,6 +448,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    margin: auto;
     align-items: center;
     gap: 1em;
 }
@@ -219,8 +486,9 @@
 /* FORM SECTION */
 
 .form {
-    margin: auto;
-    max-width: 30em;
+  margin: auto;
+  margin-top: 2em;
+  min-width: 360px;
 }
 
 .form form {
@@ -248,3 +516,8 @@
 
 /* MEDIA */
 
+@media screen and (min-width: 768px) {
+  .todolist {
+    width: calc(100% - 360px);
+  }
+}
